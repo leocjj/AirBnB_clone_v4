@@ -13,3 +13,18 @@ header {
     background: url("../images/logo.png") no-repeat center;
     padding-left: 20px;
 }
+/* For status flag */
+ header div {
+    float: right;
+    background-color: #cccccc;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-top: 15px;
+    margin-right: 30px;
+}
+
+/* For status flag */
+.available {
+	background-color: #ff545f;
+}
