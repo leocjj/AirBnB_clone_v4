@@ -14,11 +14,11 @@ import uuid
 
 app = Flask(__name__)
 
+
 @app.teardown_appcontext
 def teardown_db(exception):
     """ remove the current SQLAlchemy Session """
     storage.close()
-
 
 
 @app.route('/0-hbnb/', strict_slashes=False)
