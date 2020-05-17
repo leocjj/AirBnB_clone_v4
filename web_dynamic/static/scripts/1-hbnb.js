@@ -1,4 +1,4 @@
-let checked = {};
+const checked = {};
 $(document).ready(function () {
   $('input:checkbox').change(function () {
     if ($(this).is(':checked')) {
@@ -7,7 +7,7 @@ $(document).ready(function () {
       delete checked[$(this).data('id')];
     }
     $('div.amenities h4').html(function () {
-      let amenities = [];
+      const amenities = [];
       Object.keys(checked).forEach(function (key) {
         amenities.push(checked[key]);
       });
