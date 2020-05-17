@@ -140,9 +140,16 @@ def places_search():
             not cities and
             not amenities):
         places = storage.all(Place).values()
+
         list_places = []
         for place in places:
-            list_places.append(place.to_dict())
+            dictplace = place.to_dict()
+            userid = dictplace.get('user_id')
+            user = storage.get(User, userid)
+            if not user:
+                abort(404)
+            dictplace['username'] = user.first_name+' '+user.last_name
+            list_places.append(dictplace)
         return jsonify(list_places)
 
     list_places = []
