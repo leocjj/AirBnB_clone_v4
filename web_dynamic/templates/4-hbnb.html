@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<HTML lang="en">
+
+<HEAD>
+    <TITLE>Holberton School</TITLE>
+    <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
+    <SCRIPT src="{{ url_for('static', filename='scripts/4-hbnb.js') }}?{{ cache_id }}"></SCRIPT>
+    <LINK href="../static/styles/3-header.css?{{cache_id}}" rel="stylesheet">
+    <LINK href="../static/styles/4-common.css?{{cache_id}}" rel="stylesheet">
+    <LINK href="../static/styles/3-footer.css?{{cache_id}}" rel="stylesheet">
+    <LINK href="../static/styles/6-filters.css?{{cache_id}}" rel="stylesheet">
+    <LINK href="../static/styles/8-places.css?{{cache_id}}" rel="stylesheet">
+    <LINK href="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon.png?{{cache_id}}" rel="icon">
+</HEAD>
+
+<BODY>
+    <HEADER>
+        <div class="logo"></div>
+        <div class="status" id="api_status"></div>
+    </HEADER>
+    <DIV class="container">
+        <SECTION class="filters">
+            <DIV class="locations">
+                <H3>States</H3>
+                <H4>&nbsp</H4>
+                <UL class="popover">
+                {% for state in states|sort(attribute='name') %}
+                    <LI><H2>{{ state.name }}:</H2></LI>
+                    <LI>
+                        <UL class="popover_list">
+                        {% for city in state.cities|sort(attribute='name') %}
+                            <LI>{{ city.name }}</LI>
+                        {% endfor %}
+                        </UL>
+                    </LI>
+                {% endfor %}
+                </UL>
+            </DIV>
+            <DIV class="amenities">
+                <H3>Amenities</H3>
+                <H4>&nbsp</H4>
+                <UL class="popover">
+                {% for amenity in amenities|sort(attribute='name') %}
+                   <LI><INPUT type="checkbox" style="margin-right:10px;" data-id={{ amenity.id }} data-name='{{ amenity.name }}'/>
+                        {{ amenity.name }}
+                   </LI>
+                {% endfor %}
+                </UL>
+            </DIV>
+            <BUTTON type="button">Search</BUTTON>
+        </SECTION>
+        <SECTION class="places">
+            <DIV class="places_title">
+                <H1>Places</H1>
+            </DIV>
+            <DIV class="articles">
+            {% for place in places|sort(attribute='name') %}
+            {% endfor %}
+            </DIV>
+        </SECTION>
+    </DIV>
+    <FOOTER>
+        Holberton School
+    </FOOTER>
+</BODY>
+
+</HTML>
