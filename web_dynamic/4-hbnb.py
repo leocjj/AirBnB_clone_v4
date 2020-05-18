@@ -26,6 +26,7 @@ def hbnb():
     """
     hbnn clone whith data from DB mysql
     includes places and users data
+    includes cache_id
     """
     amenities = storage.all(Amenity).values()
     states = storage.all(State).values()
